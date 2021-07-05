@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 200);
             $table->text('profile')->nullable();
-            $table->string('phone_number', 25);
+            $table->string('phone_number', 25)->nullable();
             $table->date('birth_date')->nullable();
-            $table->boolean('verified')->default(0);
+            $table->boolean('verified')->default(false);
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
