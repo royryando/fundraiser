@@ -96,7 +96,7 @@ class AuthController extends Controller
         $user->password = Hash::make($password);
         $user->is_admin = false;
         $user->save();
-        // TODO: send verification email
+
         Mail::to($user)
             ->send(new MailVerification(Crypt::encryptString($user->email)));
 
