@@ -123,7 +123,7 @@ class AuthController extends Controller
         $token = $request->input('token');
         if (!$token) abort(404);
         try {
-            $email = Crypt::decrypt($token);
+            $email = Crypt::decryptString($token);
             if (empty($email)) abort(404);
             $user = User::where('email', $email)
                 ->whereNull('email_verified_at')
