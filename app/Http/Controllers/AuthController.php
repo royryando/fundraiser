@@ -22,7 +22,7 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request) {
-        $email = $request->input('email');
+        $email = $request->input('username');
         $password = $request->input('password');
 
         $user = User::where('email', $email)
@@ -32,6 +32,7 @@ class AuthController extends Controller
             // wrong email or password
             return redirect()
                 ->back()
+                ->withInput($request->except('password'))
                 ->with([
                     'message_type' => 'warning',
                     'message' => 'Wrong email or password, please try again'
@@ -41,6 +42,7 @@ class AuthController extends Controller
             // wrong email or password
             return redirect()
                 ->back()
+                ->withInput($request->except('password'))
                 ->with([
                     'message_type' => 'warning',
                     'message' => 'Wrong email or password, please try again'
@@ -49,6 +51,7 @@ class AuthController extends Controller
             // please activate your account
             return redirect()
                 ->back()
+                ->withInput($request->except('password'))
                 ->with([
                     'message_type' => 'info',
                     'message' => 'Please verify your email'
