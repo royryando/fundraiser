@@ -110,8 +110,7 @@ class AuthController extends Controller
             ->with([
                 'message_type' => 'success',
                 'message' => 'Registration success, please check your email'
-            ])
-            ->withInput($request->except(['password', 'confirm_password']));
+            ]);
     }
 
     public function logout() {
