@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailVerification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -58,11 +61,52 @@ class AuthController extends Controller
     }
 
     public function register() {
-        //
+        return view('auth.register');
     }
 
-    public function postRegister() {
-        //
+    public function postRegister(Request $request) {
+        $name = $request->input('name');
+        $email = $request->input('username');
+        $password = $request->input('password');
+        $confirmPassword = $request->input('confirm_password');
+
+        $check = User::where('email', $email)->first();
+        if ($check) {
+            $loginLink = route('auth.login');
+            return redirect()
+                ->back()
+                ->with([
+                    'message_type' => 'warning',
+                    'message' => 'Email already registered, please <a href="'.$loginLink.'">login here</a>'
+                ])
+                ->withInput($request->except(['password', 'confirm_password']));
+        }
+        if ($password !== $confirmPassword) {
+            return redirect()
+                ->back()
+                ->with([
+                    'message_type' => 'warning',
+                    'message' => "Confirmation password doesn't match"
+                ])
+                ->withInput($request->except(['password', 'confirm_password']));
+        }
+        $user = new User();
+        $user->email = $email;
+        $user->name = $name;
+        $user->password = Hash::make($password);
+        $user->is_admin = false;
+        $user->save();
+        // TODO: send verification email
+        Mail::to($user)
+            ->send(new MailVerification(Crypt::encryptString($user->email)));
+
+        return redirect()
+            ->back()
+            ->with([
+                'message_type' => 'success',
+                'message' => 'Registration success, please check your email'
+            ])
+            ->withInput($request->except(['password', 'confirm_password']));
     }
 
     public function logout() {
