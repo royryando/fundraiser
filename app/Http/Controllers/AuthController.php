@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Mail\MailVerification;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -116,6 +118,29 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()
             ->route('index');
+    }
+
+    public function verification(Request $request) {
+        $token = $request->input('token');
+        if (!$token) abort(404);
+        try {
+            $email = Crypt::decrypt($token);
+            if (empty($email)) abort(404);
+            $user = User::where('email', $email)
+                ->whereNull('email_verified_at')
+                ->first();
+            if (!$user) abort(404);
+            $user->email_verified_at = Carbon::now();
+            $user->save();
+            return redirect()
+                ->route('auth.login')
+                ->with([
+                    'message_type' => 'success',
+                    'message' => 'Email verified successfully, please login'
+                ]);
+        } catch (DecryptException $ex) {
+            abort(404);
+        }
     }
 
 }

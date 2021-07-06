@@ -31,7 +31,7 @@ class MailVerification extends Mailable
      */
     public function build()
     {
-        $link = 'https://www.google.com/token='.$this->token;
+        $link = route('auth.verification', ['token' => $this->token]);
         return $this->view('mail.account_verification', compact('link'));
     }
 }
