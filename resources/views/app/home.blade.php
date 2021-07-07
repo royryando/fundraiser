@@ -115,6 +115,10 @@
                     </div>
                 </div>
             </div>
+
+            <button class="mx-auto gradient text-white font-bold rounded-full my-6 py-3 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Browse more
+            </button>
         </div>
     </section>
     <section class="bg-white py-8">
