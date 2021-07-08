@@ -1,5 +1,4 @@
 @extends('layouts.app.default')
-@section('body-class', 'leading-normal tracking-normal text-white gradient" style="font-family: \'Source Sans Pro\', sans-serif;')
 @section('content')
     <div class="pt-24">
         <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
