@@ -16,6 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('index.home');
+Route::get('browse-fundraisers', [HomeController::class, 'browse'])->name('index.browse');
 Route::prefix('auth')->group(function() {
     Route::get('login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('login', [AuthController::class, 'postLogin'])->name('auth.post-login');

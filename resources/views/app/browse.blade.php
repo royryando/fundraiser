@@ -1,21 +1,15 @@
 @extends('layouts.app.default')
+@section('title', 'Browse Fundraisers')
 @section('content')
     <div class="pt-24">
         <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-            <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-                <p class=" tracking-loose w-full">Hello #GoodPeople</p>
+            <div class="flex flex-col w-full py-4 justify-center items-center text-center md:text-center">
                 <h1 class="my-4 text-5xl font-bold leading-tight">
-                    Welcome to Fundraiser, charity made easy
+                    Browse Fundraisers
                 </h1>
                 <p class="leading-normal text-2xl mb-8">
-                    Fundraising for the people and causes you care about
+                    People around the world are raising money for what they are passionate about
                 </p>
-                <a href="{{ route('index.browse') }}" class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6 py-3 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                    Browse Campaign
-                </a>
-            </div>
-            <div class="w-full md:w-3/5 py-6 text-center">
-                <img class="w-full md:w-4/5 z-50" src="{{ asset('img/hero.png') }}" alt="Logo" />
             </div>
         </div>
     </div>
@@ -38,20 +32,13 @@
             </g>
         </svg>
     </div>
-    <section class="bg-white border-b py-8">
+    <section class="bg-white py-8">
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
-            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                Top Fundraisers
-            </h1>
-            <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-            </div>
-
-            <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+            <div class="p-10 grid grid-cols-1 grid-flow-row auto-rows-max sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
                 <div class="rounded overflow-hidden shadow-lg">
                     <img class="w-full" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Mountain">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl text-gray-900 truncate">Lorem ipsum dolor sit amet</div>
+                        <div class="font-bold text-xl text-gray-900 truncate">Lorem ipsum dolor sit amet amet amet amet amet</div>
                         <div class="font-light text-sm text-blue-500 mb-2">Bandung, Indonesia</div>
                         <p class="text-gray-700 text-base">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
@@ -113,64 +100,119 @@
                         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 3w ago</span>
                     </div>
                 </div>
-            </div>
 
-            <a href="{{ route('index.browse') }}" class="mx-auto gradient text-white font-bold rounded-full my-6 py-3 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                Browse more
-            </a>
-        </div>
-    </section>
-    <section class="bg-white py-8">
-        <div class="container max-w-5xl mx-auto m-8">
-            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                How to Start?
-            </h1>
-            <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-            </div>
-            <div class="flex flex-wrap">
-                <div class="w-5/6 sm:w-1/2 p-6">
-                    <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                        Create a campaign
-                    </h3>
-                    <p class="text-gray-600 mb-8">
-                        A registered user can create a campaign for free <a href="#" class="text-blue-600">here</a>,
-                        once the campaign approved a notification will be sent to your email along with the link to your campaign.
-                    </p>
-                </div>
-                <div class="w-full sm:w-1/2 p-6">
-                    <img src="{{ asset('img/hiw-1.jpg') }}" alt="Create a campaign" class="w-full sm:h-64 mx-auto">
-                </div>
-            </div>
-            <div class="flex flex-wrap flex-col-reverse sm:flex-row">
-                <div class="w-full sm:w-1/2 p-6 mt-6">
-                    <img src="{{ asset('img/hiw-2.jpg') }}" alt="Share and get the donation" class="w-full sm:h-64 mx-auto">
-                </div>
-                <div class="w-full sm:w-1/2 p-6 mt-6">
-                    <div class="align-middle">
-                        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                            Share and get the donation
-                        </h3>
-                        <p class="text-gray-600 mb-8">
-                            Share the link to the people all around the world through social media, etc. Every incoming
-                            donation will recorded real time and can be seen publicly.
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img class="w-full" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Mountain">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl text-gray-900">Lorem ipsum dolor sit amet</div>
+                        <div class="font-light text-sm text-blue-500 mb-2">Bandung, Indonesia</div>
+                        <p class="text-gray-700 text-base">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
                         </p>
+                    </div>
+                    <div class="relative px-6 pt-2">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div style="width:100%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
+                        </div>
+                        <div class="text-gray-900">
+                            <strong>Rp25,000,000 raised</strong> of Rp25,000,000
+                        </div>
+                    </div>
+                    <div class="px-6 pt-4 pb-2">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 8m ago</span>
+                    </div>
+                </div>
+
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img class="w-full" src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="River">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl text-gray-900">Lorem ipsum dolor sit amet</div>
+                        <div class="font-light text-sm text-blue-500 mb-2">Jakarta, Indonesia</div>
+                        <p class="text-gray-700 text-base">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                        </p>
+                    </div>
+                    <div class="relative px-6 pt-2">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div style="width:10%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
+                        </div>
+                        <div class="text-gray-900">
+                            <strong>Rp5,000,000 raised</strong> of Rp50,000,000
+                        </div>
+                    </div>
+                    <div class="px-6 pt-4 pb-2">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 2d ago</span>
+                    </div>
+                </div>
+
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img class="w-full" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Forest">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl text-gray-900">Lorem ipsum dolor sit amet</div>
+                        <div class="font-light text-sm text-blue-500 mb-2">Surabaya, Indonesia</div>
+                        <p class="text-gray-700 text-base">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                        </p>
+                    </div>
+                    <div class="relative px-6 pt-2">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div style="width:50%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
+                        </div>
+                        <div class="text-gray-900">
+                            <strong>Rp625,000 raised</strong> of Rp1,250,000
+                        </div>
+                    </div>
+                    <div class="px-6 pt-4 pb-2">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 3w ago</span>
+                    </div>
+                </div>
+
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img class="w-full" src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="River">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl text-gray-900">Lorem ipsum dolor sit amet</div>
+                        <div class="font-light text-sm text-blue-500 mb-2">Jakarta, Indonesia</div>
+                        <p class="text-gray-700 text-base">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                        </p>
+                    </div>
+                    <div class="relative px-6 pt-2">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div style="width:10%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
+                        </div>
+                        <div class="text-gray-900">
+                            <strong>Rp5,000,000 raised</strong> of Rp50,000,000
+                        </div>
+                    </div>
+                    <div class="px-6 pt-4 pb-2">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 2d ago</span>
+                    </div>
+                </div>
+
+                <div class="rounded overflow-hidden shadow-lg">
+                    <img class="w-full" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Forest">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl text-gray-900">Lorem ipsum dolor sit amet</div>
+                        <div class="font-light text-sm text-blue-500 mb-2">Surabaya, Indonesia</div>
+                        <p class="text-gray-700 text-base">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                        </p>
+                    </div>
+                    <div class="relative px-6 pt-2">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                            <div style="width:50%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
+                        </div>
+                        <div class="text-gray-900">
+                            <strong>Rp625,000 raised</strong> of Rp1,250,000
+                        </div>
+                    </div>
+                    <div class="px-6 pt-4 pb-2">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 3w ago</span>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-wrap">
-                <div class="w-5/6 sm:w-1/2 p-6">
-                    <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                        Withdrawing funds
-                    </h3>
-                    <p class="text-gray-600 mb-8">
-                        The charity organizer (who create the charity) can withdraw some or all the funds to their bank
-                        account anytime, the withdrawal process takes up to 24h after the request.
-                    </p>
-                </div>
-                <div class="w-full sm:w-1/2 p-6">
-                    <img src="{{ asset('img/hiw-3.jpg') }}" alt="Withdrawing funds" class="w-full sm:h-64 mx-auto">
-                </div>
+            <div class="w-full hidden" id="spinner">
+                <img class="mx-auto" src="{{ asset('img/spinner.svg') }}" alt="Loading" height="40px" width="40px">
             </div>
         </div>
     </section>
@@ -203,11 +245,11 @@
             <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
         <h3 class="w-full my-4 text-3xl leading-tight">
-            Browse the campaign and start helping each other
+            Sign up for free and start donate or making a fundraiser
         </h3>
         <div class="w-full pt-10 pb-3">
-            <a href="{{ route('index.browse') }}" class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full py-3 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                Browse Campaign
+            <a href="{{ route('auth.register') }}" class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full py-3 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Join Now
             </a>
         </div>
     </section>
