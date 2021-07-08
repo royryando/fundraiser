@@ -3,7 +3,7 @@
 @section('content')
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
         <div class="grid grid-cols-1 py-3">
-            <img class="box-border h-24 w-24 mx-auto" src="{{ asset('img/logo.png') }}" alt="Fundraiser">
+            <img class="box-border h-24 w-24 mx-auto" src="{{ asset('img/logo.png') }}" alt="{{ config('app.name') }}">
         </div>
         <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
             @include('layouts.alert')
