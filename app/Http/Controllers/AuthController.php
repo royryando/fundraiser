@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         Auth::login($user);
         return redirect()
-            ->route('index'); // TODO: redirect to home page
+            ->route('index.home'); // TODO: redirect to home page
     }
 
     public function register() {
@@ -116,7 +116,7 @@ class AuthController extends Controller
     public function logout() {
         Auth::logout();
         return redirect()
-            ->route('index');
+            ->route('index.home');
     }
 
     public function verification(Request $request) {

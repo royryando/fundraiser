@@ -19,6 +19,7 @@ use App\Http\Controllers\AccountController;
 Route::get('/', [HomeController::class, 'home'])->name('index.home');
 Route::get('browse-fundraisers', [HomeController::class, 'browse'])->name('index.browse');
 Route::prefix('account')->group(function() {
+    Route::get('dashboard', [AccountController::class, 'dashboard'])->name('account.dashboard');
     Route::get('create-fundraiser', [AccountController::class, 'createFundraiser'])->name('account.create-fundraiser');
 });
 Route::prefix('auth')->group(function() {
