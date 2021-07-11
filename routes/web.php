@@ -16,11 +16,16 @@ use App\Http\Controllers\AccountController;
 |
 */
 
+Route::get('login', function() {
+    return redirect()->route('auth.login');
+})->name('login');
 Route::get('/', [HomeController::class, 'home'])->name('index.home');
 Route::get('browse-fundraisers', [HomeController::class, 'browse'])->name('index.browse');
-Route::prefix('account')->group(function() {
+Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     Route::get('dashboard', [AccountController::class, 'dashboard'])->name('account.dashboard');
     Route::get('create-fundraiser', [AccountController::class, 'createFundraiser'])->name('account.create-fundraiser');
+    Route::get('my-campaigns', [AccountController::class, 'myCampaigns'])->name('account.my-campaigns');
+    Route::get('my-donations', [AccountController::class, 'myDonations'])->name('account.my-donations');
 });
 Route::prefix('auth')->group(function() {
     Route::get('login', [AuthController::class, 'login'])->name('auth.login');

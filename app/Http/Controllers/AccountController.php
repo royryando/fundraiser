@@ -15,4 +15,12 @@ class AccountController extends Controller
         return view('app.account.create_fundraiser');
     }
 
+    public function myCampaigns() {
+        return view('app.account.my_campaigns');
+    }
+
+    public function myDonations() {
+        return view('app.account.my_donations');
+    }
+
 }

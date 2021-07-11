@@ -1,6 +1,6 @@
 @extends('layouts.app.account.default')
-@section('title', 'Create Fundraiser')
+@section('title', 'My Campaigns')
 @php($active = 'my-campaigns')
 @section('content')
-    <h1>Create Fundraiser</h1>
+    <h1>My Campaigns</h1>
 @endsection

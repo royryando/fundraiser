@@ -26,10 +26,10 @@
                         <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Active</a>
                     </li>--}}
                     <li class="mr-3">
-                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">My Campaigns</a>
+                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{{ route('account.my-campaigns') }}">My Campaigns</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">My Donations</a>
+                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{{ route('account.my-donations') }}">My Donations</a>
                     </li>
                 </ul>
                 <a href="{{ route('account.dashboard') }}"
