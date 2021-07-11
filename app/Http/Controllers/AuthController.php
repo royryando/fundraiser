@@ -61,8 +61,14 @@ class AuthController extends Controller
         }
 
         Auth::login($user);
+        if (session()->has('url.intended')) {
+            $redirectTo = session()->get('url.intended');
+            session()->forget('url.intended');
+            $request->session()->regenerate();
+            return redirect($redirectTo);
+        }
         return redirect()
-            ->route('index.home'); // TODO: redirect to home page
+            ->route('index.home');
     }
 
     public function register() {
