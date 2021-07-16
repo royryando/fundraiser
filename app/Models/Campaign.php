@@ -23,7 +23,6 @@ class Campaign extends Model
         'last_donation',
         'location',
         'target_date',
-        'is_admin',
     ];
 
     protected $casts = [
