@@ -19,6 +19,9 @@ class Campaign extends Model
         'target',
         'collected',
         'donors',
+        'views',
+        'last_donation',
+        'location',
         'target_date',
         'is_admin',
     ];
@@ -28,5 +31,6 @@ class Campaign extends Model
         'collected' => 'integer',
         'donors' => 'integer',
         'target_date' => 'date',
+        'last_donation' => 'date',
     ];
 }
