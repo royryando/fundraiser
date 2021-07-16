@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -16,7 +18,11 @@ class AccountController extends Controller
     }
 
     public function myCampaigns() {
-        return view('app.account.my_campaigns');
+        $campaigns = Campaign::where('user_id', Auth::user()['id'])
+            ->orderByRaw('FIELD(status, "ACTIVE", "INACTIVE")')
+            ->orderBy('views')
+            ->get();
+        return view('app.account.my_campaigns', compact('campaigns'));
     }
 
     public function myDonations() {

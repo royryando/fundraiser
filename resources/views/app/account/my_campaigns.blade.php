@@ -14,26 +14,22 @@
                 <thead>
                 <tr>
                     <th class="text-left whitespace-nowrap pl-3">CAMPAIGN NAME</th>
-                    <th class="text-left whitespace-nowrap">TARGET / COLLECTED</th>
-                    <th class="text-center whitespace-nowrap">SINCE</th>
+                    <th class="text-left whitespace-nowrap">COLLECTED / TARGET</th>
+                    <th class="text-center whitespace-nowrap">TARGET DATE</th>
                     <th class="text-center whitespace-nowrap">STATUS</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
                 </thead>
                 <tbody>
-                @for($i=0;$i<10;$i++)
+                @foreach($campaigns as $campaign)
                 <tr class="shadow-sm rounded-md">
-                    <td class="py-4 my-2 pl-3">Lorem Ipsum dolor sit amet</td>
-                    <td>Rp25,000,000 / Rp12,354,500 (48%)</td>
-                    <td class="text-center">April 24, 2000</td>
+                    <td class="py-4 my-2 pl-3">
+                        <a class="text-blue-600" href="#">{{ $campaign->title }}</a>
+                    </td>
+                    <td>Rp{{ number_format($campaign->collected, 0, 0, ',') }} / Rp{{ number_format($campaign->target, 0, 0, ',') }} ({{ round(($campaign->collected / $campaign->target) * 100, 1) }}%)</td>
+                    <td class="text-center">{{ $campaign->target_date->format('F d, Y') }}</td>
                     <td class="w-40">
-                        {{--<div class="flex items-center justify-center text-red-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-2 w-4 h-4 mr-2">
-                                <polyline points="9 11 12 14 22 4"></polyline>
-                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                            </svg>
-                            Inactive
-                        </div>--}}
+                        @if($campaign->status == 'ACTIVE')
                         <div class="flex items-center justify-center text-green-500">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-2 w-4 h-4 mr-2">
                                 <polyline points="9 11 12 14 22 4"></polyline>
@@ -41,6 +37,15 @@
                             </svg>
                             Active
                         </div>
+                        @else
+                        <div class="flex items-center justify-center text-red-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-2 w-4 h-4 mr-2">
+                                <polyline points="9 11 12 14 22 4"></polyline>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                            Inactive
+                        </div>
+                        @endif
                     </td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
@@ -63,7 +68,7 @@
                         </div>
                     </td>
                 </tr>
-                @endfor
+                @endforeach
                 </tbody>
             </table>
         </div>

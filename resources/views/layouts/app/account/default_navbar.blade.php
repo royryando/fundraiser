@@ -15,7 +15,7 @@
             <span class="text-sm">My Donations</span>
         @endif
     </a>
-    <div class="py-1 px-3 bg-indigo-700 rounded text-white flex items-center justify-center text-xs">0</div>
+    <div class="py-1 px-3 bg-indigo-700 rounded text-white flex items-center justify-center text-xs">{{ \App\Helpers\StaticData::myTotalDonation() }}</div>
 </li>
 <li class="flex w-full justify-between {{ isset($active) && $active == 'my-campaigns' ? 'text-indigo-700' : 'text-gray-600' }} cursor-pointer items-center mb-6">
     <a href="{{ route('account.my-campaigns') }}" class="flex items-center">
@@ -25,7 +25,7 @@
             <span class="text-sm">My Campaigns</span>
         @endif
     </a>
-    <div class="py-1 px-3 bg-indigo-700 rounded text-white flex items-center justify-center text-xs">0</div>
+    <div class="py-1 px-3 bg-indigo-700 rounded text-white flex items-center justify-center text-xs">{{ \App\Helpers\StaticData::myTotalCampaign() }}</div>
 </li>
 <li class="flex w-full justify-between text-gray-600 cursor-pointer items-center mb-6">
     <a href="{{ route('auth.logout') }}" class="flex items-center">
