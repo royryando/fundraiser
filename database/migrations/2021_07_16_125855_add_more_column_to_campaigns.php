@@ -15,7 +15,7 @@ class AddMoreColumnToCampaigns extends Migration
     {
         Schema::table('campaigns', function (Blueprint $table) {
             $table->bigInteger('views')->after('donors');
-            $table->dateTime('last_donation')->after('views');
+            $table->dateTime('last_donation')->nullable()->after('views');
             $table->string('location', 100)->after('last_donation');
         });
     }
