@@ -48,7 +48,7 @@
                         <div class="mb-3">
                             <p class="text-sm text-gray-500">
                                 @if($donors >= 1)
-                                    2.500 peoples have donated to this fundraiser
+                                    {{ number_format($donors, 0, 0, '.') }} peoples have donated to this fundraiser
                                 @else
                                     Be the first to donate
                                 @endif
