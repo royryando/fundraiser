@@ -21,6 +21,7 @@ Route::get('login', function() {
 })->name('login');
 Route::get('/', [HomeController::class, 'home'])->name('index.home');
 Route::get('browse-fundraisers', [HomeController::class, 'browse'])->name('index.browse');
+Route::get('{code}', [HomeController::class, 'view'])->name('index.view');
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     Route::get('dashboard', [AccountController::class, 'dashboard'])->name('account.dashboard');
     Route::get('create-fundraiser', [AccountController::class, 'createFundraiser'])->name('account.create-fundraiser');

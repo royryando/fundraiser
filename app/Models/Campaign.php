@@ -33,4 +33,8 @@ class Campaign extends Model
         'target_date' => 'date',
         'last_donation' => 'date',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

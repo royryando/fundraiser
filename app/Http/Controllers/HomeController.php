@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Donor;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,6 +23,23 @@ class HomeController extends Controller
             ->orderBy('views', 'DESC')
             ->get();
         return view('app.browse', compact('campaigns'));
+    }
+
+    public function view($code) {
+        $campaign = Campaign::where('code', $code)
+            ->first();
+        if (!$campaign) {
+            abort(404);
+        }
+        $latest = Donor::where('campaign_id', $campaign->id)
+            ->whereNotNull('paid_at')
+            ->orderBy('paid_at', 'DESC')
+            ->limit(5)
+            ->get();
+        $donors = Donor::where('campaign_id', $campaign->id)
+            ->whereNotNull('paid_at')
+            ->count();
+        return view('app.view', compact('campaign', 'latest', 'donors'));
     }
 
 }

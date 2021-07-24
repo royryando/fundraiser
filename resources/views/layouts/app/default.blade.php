@@ -13,6 +13,7 @@
     @else
         <title>{{ config('app.name') }}: #1 Fundraising Platform on Mars</title>
     @endif
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <style>
         .gradient {

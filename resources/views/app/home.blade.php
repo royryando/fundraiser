@@ -49,15 +49,15 @@
 
             <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
                 @foreach($tops as $c)
-                <a href="#">
+                <a href="{{ route('index.view', ['code' => $c->code]) }}">
                     <div class="rounded overflow-hidden shadow-lg">
                         <img class="w-full" src="{{ $c->thumbnail }}" alt="Mountain">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl text-gray-900 truncate">{{ $c->title }}</div>
                             <div class="font-light text-sm text-blue-500 mb-2">{{ $c->location }}</div>
-                            <p class="text-gray-700 text-base">
-                                {!! $c->description !!}
-                            </p>
+                            <div class="text-gray-700 text-base">
+                                {!! \App\Helpers\StaticData::campaignShortDescription($c->description) !!}
+                            </div>
                         </div>
                         <div class="relative px-6 pt-2">
                             <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
