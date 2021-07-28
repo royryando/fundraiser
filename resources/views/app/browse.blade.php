@@ -51,7 +51,7 @@
                                     <div style="width:{{ round(($c->collected / $c->target) * 100) }}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
                                 </div>
                                 <div class="text-gray-900">
-                                    <strong>Rp{{ number_format($c->collected, 0, 0, ',') }} raised</strong> of Rp{{ number_format($c->target, 0, 0, ',') }}
+                                    <strong>Rp{{ number_format($c->collected, 0, 0, '.') }} raised</strong> of Rp{{ number_format($c->target, 0, 0, '.') }}
                                 </div>
                             </div>
                             <div class="px-6 pt-4 pb-2">

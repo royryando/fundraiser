@@ -39,8 +39,8 @@
                 <div class="order-1 xl:order-2 lg:order-2 p-3">
                     <div class="grid gap-3 grid-flow-row border-solid border-gray-200 border-1 rounded-md shadow-md p-4">
                         <div class="flex items-end">
-                            <p class="flex-none text-2xl font-bold text-black">Rp{{ number_format($campaign->collected, 0, 0, ',') }}</p>
-                            <p class="flex-frow ml-1 pb-1 text-black text-gray-500">raised of Rp{{ number_format($campaign->target, 0, 0, ',') }} goal</p>
+                            <p class="flex-none text-2xl font-bold text-black">Rp{{ number_format($campaign->collected, 0, 0, '.') }}</p>
+                            <p class="flex-frow ml-1 pb-1 text-black text-gray-500">raised of Rp{{ number_format($campaign->target, 0, 0, '.') }} goal</p>
                         </div>
                         <div class="overflow-hidden h-1.5 text-xs flex rounded bg-blue-200">
                             <div style="width:{{ round(($campaign->collected / $campaign->target) * 100) }}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
@@ -62,7 +62,7 @@
                                 <img src="{{ asset('img/anonymous-user.png') }}" alt="" class="w-14 h-14">
                                 <div class="grid-flow-row pl-3">
                                     <p class="font-bold">{{ $donor->user->name }}</p>
-                                    <p class="">Rp{{ number_format($donor->amount, 0, 0, ',') }} &middot; {{ $donor->paid_at ? $donor->paid_at->diffForHumans() : 'unknown time' }}</p>
+                                    <p class="">Rp{{ number_format($donor->amount, 0, 0, '.') }} &middot; {{ $donor->paid_at ? $donor->paid_at->diffForHumans() : 'unknown time' }}</p>
                                 </div>
                             </div>
                             <hr class="my-3">
@@ -137,16 +137,16 @@
         $(document).ready(function() {
             let amountInput = $('#amount');
             let donateAlertText = $('#donate-alert-text');
-            amountInput.mask('000,000,000', {reverse: true});
+            amountInput.mask('000.000.000', {reverse: true});
             $('#btn-donate').on('click', function() {
                 $('#donate-container').fadeIn(1000);
                 $(this).hide();
             });
             $('#donate-form').on('submit', function() {
-                let amount = parseInt(amountInput.val().replaceAll(',', ''));
+                let amount = parseInt(amountInput.val().replaceAll('.', ''));
                 if (amount < 10000) {
                     donateAlertText.fadeIn(500);
-                    donateAlertText.text('The minimum amount of donation is Rp10,000')
+                    donateAlertText.text('The minimum amount of donation is Rp10.000')
                     return false;
                 }
             });
