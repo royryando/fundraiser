@@ -70,7 +70,20 @@
                                 <i class="text-sm">Be the first to donate</i>
                             @endforelse
                         </div>
-                        <button class="mb-4 w-full text-white bg-blue-500 border hover:bg-blue-700 hover:text-white active:bg-blue-700 font-bold px-8 py-3 rounded-full outline-none focus:outline-none ease-linear transition-all duration-100" type="button">
+                        <div class="mb-7" style="display: none" id="donate-container">
+                            <form action="#" method="POST" id="donate-form" class="w-full items-center flex px-2">
+                                @csrf
+                                <span class="items-center text-md pt-1">Rp</span>
+                                <input type="text" name="amount" id="amount" placeholder="Enter Amount" class="amount rounded-full ml-2 w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autocomplete="off" required>
+                                <div class="flex items-center mx-2">
+                                    <input name="send-anonymous" type="checkbox" id="send-anonymous">
+                                    <label class="text-xs ml-1" for="send-anonymous">Send as Anonymous</label>
+                                </div>
+                                <button id="btn-pay" type="submit" class="text-white bg-blue-500 border hover:bg-blue-700 hover:text-white active:bg-blue-700 font-bold px-8 py-3 rounded-full outline-none focus:outline-none ease-linear transition-all duration-100">Pay</button>
+                            </form>
+                            <p id="donate-alert-text" class="text-sm ml-2 text-red-600" style="display: none"></p>
+                        </div>
+                        <button id="btn-donate" class="mb-4 w-full text-white bg-blue-500 border hover:bg-blue-700 hover:text-white active:bg-blue-700 font-bold px-8 py-3 rounded-full outline-none focus:outline-none ease-linear transition-all duration-100" type="button">
                             <i class="fa fa-handshake-o mr-1"></i> Donate now
                         </button>
                         <div class="addthis_inline_share_toolbox_gl2a"></div>
@@ -118,5 +131,25 @@
     </section>
 @endsection
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b1d15e2447d3451"></script>
+    <script defer>
+        $(document).ready(function() {
+            let amountInput = $('#amount');
+            let donateAlertText = $('#donate-alert-text');
+            amountInput.mask('000,000,000', {reverse: true});
+            $('#btn-donate').on('click', function() {
+                $('#donate-container').fadeIn(1000);
+                $(this).hide();
+            });
+            $('#donate-form').on('submit', function() {
+                let amount = parseInt(amountInput.val().replaceAll(',', ''));
+                if (amount < 10000) {
+                    donateAlertText.fadeIn(500);
+                    donateAlertText.text('The minimum amount of donation is Rp10,000')
+                    return false;
+                }
+            });
+        });
+    </script>
 @endsection
