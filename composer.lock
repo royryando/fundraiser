@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92eb506dc3abc2591b7c8d3a262a3b60",
+    "content-hash": "b5e59c83efde0c1471d72c624aafd99a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2452,6 +2452,65 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "royryando/laravel-duitku",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/royryando/laravel-duitku.git",
+                "reference": "c38b87f97322c196b05aec9885495126c32643c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/royryando/laravel-duitku/zipball/c38b87f97322c196b05aec9885495126c32643c2",
+                "reference": "c38b87f97322c196b05aec9885495126c32643c2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Royryando\\Duitku\\DuitkuServiceProvider"
+                    ],
+                    "aliases": {
+                        "Duitku": "Royryando\\Duitku\\DuitkuProcessor"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Royryando\\Duitku\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roy Habeahan",
+                    "email": "hi@royryando.me"
+                }
+            ],
+            "description": "A simple Duitku payment gateway library for Laravel.",
+            "keywords": [
+                "duitku",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/royryando/laravel-duitku/issues",
+                "source": "https://github.com/royryando/laravel-duitku/tree/v1.0.5"
+            },
+            "time": "2021-05-23T08:29:45+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

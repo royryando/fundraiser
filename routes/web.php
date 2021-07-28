@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\DuitkuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,11 @@ Route::get('login', function() {
 Route::get('/', [HomeController::class, 'home'])->name('index.home');
 Route::get('browse-fundraisers', [HomeController::class, 'browse'])->name('index.browse');
 Route::get('{code}', [HomeController::class, 'view'])->name('index.view');
+Route::post('callback/payment', [DuitkuController::class, 'paymentCallback']);
+Route::get('callback/return', [DuitkuController::class, 'returnCallback']);
+Route::group(['middleware' => ['auth']], function() {
+    Route::post('{code}/donate', [HomeController::class, 'donate'])->name('index.post-donate');
+});
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     Route::get('dashboard', [AccountController::class, 'dashboard'])->name('account.dashboard');
     Route::get('create-fundraiser', [AccountController::class, 'createFundraiser'])->name('account.create-fundraiser');
