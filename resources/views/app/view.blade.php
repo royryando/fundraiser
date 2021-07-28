@@ -61,7 +61,7 @@
                             <div class="flex">
                                 <img src="{{ asset('img/anonymous-user.png') }}" alt="" class="w-14 h-14">
                                 <div class="grid-flow-row pl-3">
-                                    <p class="font-bold">{{ $donor->user->name }}</p>
+                                    <p class="font-bold">{!! $donor->anonymous ? '<i>Anonymous</i>' : $donor->user->name !!}</p>
                                     <p class="">Rp{{ number_format($donor->amount, 0, 0, '.') }} &middot; {{ $donor->paid_at ? $donor->paid_at->diffForHumans() : 'unknown time' }}</p>
                                 </div>
                             </div>
