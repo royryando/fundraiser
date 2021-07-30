@@ -13,6 +13,7 @@ class StaticData
     public static function myTotalDonation() {
         return Donor::where('user_id', Auth::user()['id'])
             ->where('paid', true)
+            ->whereYear('paid_at', date('Y'))
             ->count() ?? 0;
     }
 

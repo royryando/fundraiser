@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Donor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,13 @@ class AccountController extends Controller
     }
 
     public function myDonations() {
-        return view('app.account.my_donations');
+        $donations = Donor::where('user_id', Auth::user()['id'])
+            ->where('paid', true)
+            ->orderBy('paid_at', 'DESC')
+            ->whereNotNull('campaign_id')
+            ->whereYear('paid_at', date('Y'))
+            ->get();
+        return view('app.account.my_donations', compact('donations'));
     }
 
 }
