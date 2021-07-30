@@ -36,4 +36,12 @@ class Donor extends Model
         'expired_at' => 'datetime',
         'paid_at' => 'datetime',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function campaign() {
+        return $this->belongsTo(Campaign::class, 'campaign_id');
+    }
 }

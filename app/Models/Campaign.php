@@ -11,6 +11,7 @@ class Campaign extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'code',
         'user_id',
         'title',
         'thumbnail',
@@ -19,8 +20,10 @@ class Campaign extends Model
         'target',
         'collected',
         'donors',
+        'views',
+        'last_donation',
+        'location',
         'target_date',
-        'is_admin',
     ];
 
     protected $casts = [
@@ -28,5 +31,10 @@ class Campaign extends Model
         'collected' => 'integer',
         'donors' => 'integer',
         'target_date' => 'date',
+        'last_donation' => 'date',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

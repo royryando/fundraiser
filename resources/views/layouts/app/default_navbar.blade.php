@@ -15,23 +15,39 @@
             </button>
         </div>
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:px-0 lg:py-2 z-20" id="nav-content">
-            <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                {{--<li class="mr-3">
-                    <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Active</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">link</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">link</a>
-                </li>--}}
-            </ul>
-            <a href="{{ route('auth.register') }}"
-               id="navAction"
-               class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-            >
-                Join Now
-            </a>
+            @if(\Illuminate\Support\Facades\Auth::check())
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    @if(isset($__alt_nav) && $__alt_nav == true)
+                    <li class="mr-3">
+                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{{ route('auth.logout') }}">Logout</a>
+                    </li>
+                    @endif
+                    {{--<li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Active</a>
+                    </li>--}}
+                    <li class="mr-3">
+                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{{ route('account.my-campaigns') }}">My Campaigns</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{{ route('account.my-donations') }}">My Donations</a>
+                    </li>
+                </ul>
+                <a href="{{ route('account.dashboard') }}"
+                   id="navAction"
+                   class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                >
+                    Dashboard
+                </a>
+            @else
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                </ul>
+                <a href="{{ route('auth.register') }}"
+                   id="navAction"
+                   class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                >
+                    Join Now
+                </a>
+            @endif
         </div>
     </div>
     <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />

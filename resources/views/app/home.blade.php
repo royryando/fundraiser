@@ -48,73 +48,32 @@
             </div>
 
             <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-                <div class="rounded overflow-hidden shadow-lg">
-                    <img class="w-full" src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Mountain">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl text-gray-900 truncate">Lorem ipsum dolor sit amet</div>
-                        <div class="font-light text-sm text-blue-500 mb-2">Bandung, Indonesia</div>
-                        <p class="text-gray-700 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                        </p>
-                    </div>
-                    <div class="relative px-6 pt-2">
-                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-                            <div style="width:100%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
+                @foreach($tops as $c)
+                <a href="{{ route('index.view', ['code' => $c->code]) }}">
+                    <div class="rounded overflow-hidden shadow-lg">
+                        <img class="w-full" src="{{ $c->thumbnail }}" alt="Mountain">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl text-gray-900 truncate">{{ $c->title }}</div>
+                            <div class="font-light text-sm text-blue-500 mb-2">{{ $c->location }}</div>
+                            <div class="text-gray-700 text-base">
+                                {!! \App\Helpers\StaticData::campaignShortDescription($c->description) !!}
+                            </div>
                         </div>
-                        <div class="text-gray-900">
-                            <strong>Rp25,000,000 raised</strong> of Rp25,000,000
+                        <div class="relative px-6 pt-2">
+                            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                                <div style="width:{{ round(($c->collected / $c->target) * 100) }}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
+                            </div>
+                            <div class="text-gray-900">
+                                <strong>Rp{{ number_format($c->collected, 0, 0, '.') }} raised</strong> of Rp{{ number_format($c->target, 0, 0, '.') }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 8m ago</span>
-                    </div>
-                </div>
-
-                <div class="rounded overflow-hidden shadow-lg">
-                    <img class="w-full" src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="River">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl text-gray-900">Lorem ipsum dolor sit amet</div>
-                        <div class="font-light text-sm text-blue-500 mb-2">Jakarta, Indonesia</div>
-                        <p class="text-gray-700 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                        </p>
-                    </div>
-                    <div class="relative px-6 pt-2">
-                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-                            <div style="width:10%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
-                        </div>
-                        <div class="text-gray-900">
-                            <strong>Rp5,000,000 raised</strong> of Rp50,000,000
+                        <div class="px-6 pt-4 pb-2">
+                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation {{ $c->last_donation != null ? $c->last_donation->diffForHumans() : 'unknown' }}</span>
                         </div>
                     </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 2d ago</span>
-                    </div>
-                </div>
-
-                <div class="rounded overflow-hidden shadow-lg">
-                    <img class="w-full" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Forest">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl text-gray-900">Lorem ipsum dolor sit amet</div>
-                        <div class="font-light text-sm text-blue-500 mb-2">Surabaya, Indonesia</div>
-                        <p class="text-gray-700 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                        </p>
-                    </div>
-                    <div class="relative px-6 pt-2">
-                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-                            <div style="width:50%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"></div>
-                        </div>
-                        <div class="text-gray-900">
-                            <strong>Rp625,000 raised</strong> of Rp1,250,000
-                        </div>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Last donation 3w ago</span>
-                    </div>
-                </div>
+                </a>
+                @endforeach
             </div>
-
             <a href="{{ route('index.browse') }}" class="mx-auto gradient text-white font-bold rounded-full my-6 py-3 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                 Browse more
             </a>
