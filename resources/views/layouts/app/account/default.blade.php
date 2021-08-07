@@ -13,7 +13,7 @@
     @else
         <title>{{ config('app.name') }}: #1 Fundraising Platform on Mars</title>
     @endif
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     @yield('styles')
 </head>
 <body style="font-family: 'Source Sans Pro', sans-serif;">
@@ -63,7 +63,7 @@
                         <div class="border-t border-gray-300">
                             <div class="w-full flex items-center justify-between px-6 pt-1">
                                 <div class="flex items-center">
-                                    <img alt="display avatar" role="img" src="https://www.royryando.me/logo.png" class="w-8 h-8 rounded-md" />
+                                    <img alt="display avatar" role="img" src="//www.royryando.me/logo.png" class="w-8 h-8 rounded-md" />
                                     <p class="md:text-xl text-gray-800 text-base leading-4 ml-2">{{ \Illuminate\Support\Facades\Auth::user()['name'] }}</p>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                         </li>
                                     </ul>
                                     <div class="relative">
-                                        <img class="rounded-full h-10 w-10 object-cover" src="https://www.royryando.me/logo.png" alt="display avatar" role="img" />
+                                        <img class="rounded-full h-10 w-10 object-cover" src="//www.royryando.me/logo.png" alt="display avatar" role="img" />
                                         <div class="w-2 h-2 rounded-full bg-green-400 border border-white absolute inset-0 mb-0 mr-0 m-auto"></div>
                                     </div>
                                 </div>
@@ -132,6 +132,28 @@
             </nav>
             <div class="container mx-auto py-10 h-full md:w-4/5 w-11/12 px-6">
                 <div class="w-full h-full rounded">
+                    @if(session()->has('msg'))
+                        @switch(session()->get('msg_type'))
+                            @case('error')
+                            <div class="bg-red-100 mb-6 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <span class="block sm:inline">{!! session()->get('msg') !!}</span>
+                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"><svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg></span>
+                            </div>
+                            @break
+                            @case('warning')
+                            <div class="bg-yellow-100 mb-6 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative" role="alert">
+                                <span class="block sm:inline">{!! session()->get('msg') !!}</span>
+                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"><svg class="fill-current h-6 w-6 text-yellow-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg></span>
+                            </div>
+                            @break
+                            @case('success')
+                            <div class="bg-green-100 mb-6 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                                <span class="block sm:inline">{!! session()->get('msg') !!}</span>
+                                <span class="absolute top-0 bottom-0 right-0 px-4 py-3"><svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg></span>
+                            </div>
+                            @break
+                        @endswitch
+                    @endif
                     @yield('content')
                 </div>
             </div>
@@ -141,8 +163,8 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.2.1/dist/cdn.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alpinejs@3.2.1/dist/cdn.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
     let sideBar = document.getElementById("mobile-nav");

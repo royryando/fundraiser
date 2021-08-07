@@ -13,8 +13,8 @@
     @else
         <title>{{ config('app.name') }}: #1 Fundraising Platform on Mars</title>
     @endif
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <style>
         .gradient {
             background: linear-gradient(90deg, #2923e8 0%, #33d42c 100%);
@@ -30,8 +30,8 @@
 
 @include('layouts.app.default_footer')
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.2.1/dist/cdn.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alpinejs@3.2.1/dist/cdn.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
     let scrollpos = window.scrollY;

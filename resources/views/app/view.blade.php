@@ -16,7 +16,7 @@
                 <div class="order-2 xl:order-1 lg:order-1 p-3">
                     <div class="grid gap-4 grid-flow-row">
                         <div class="">
-                            <img src="{{ $campaign->thumbnail }}" alt="{{ $campaign->title }}" class="w-full rounded-md">
+                            <img src="{{ asset('storage/thumbnails/'.$campaign->thumbnail) }}" alt="{{ $campaign->title }}" class="w-full rounded-md">
                         </div>
                         <div class="flex items-center">
                             <img class="flex-none w-10 h-10 mr-3" src="{{ $campaign->user->profile ? '' : asset('img/anonymous-user.png') }}" alt="User">
