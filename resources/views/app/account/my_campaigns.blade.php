@@ -6,7 +6,7 @@
         <h2 class="text-xl">My Campaigns</h2>
         <div class="grid grid-cols-12 gap-6 mt-5">
             <div class="col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-                <button class="px-3 py-2 text-sm text-gray-100 rounded-lg bg-blue-700 hover:bg-blue-600">Create a new campaign</button>
+                <a href="{{ route('account.create-campaign') }}" class="px-3 py-2 text-sm text-gray-100 rounded-full bg-blue-700 hover:bg-blue-600">Create a new campaign</a>
             </div>
         </div>
         <div class="col-span-12 overflow-auto lg:overflow-visible mt-6">

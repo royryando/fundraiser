@@ -5,7 +5,7 @@
             <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
                 <p class=" tracking-loose w-full">Hello #GoodPeople</p>
                 <h1 class="my-4 text-5xl font-bold leading-tight">
-                    Welcome to Fundraiser, charity made easy
+                    Welcome to {{ config('app.name') }}, charity made easy
                 </h1>
                 <p class="leading-normal text-2xl mb-8">
                     Fundraising for the people and causes you care about
@@ -51,7 +51,7 @@
                 @foreach($tops as $c)
                 <a href="{{ route('index.view', ['code' => $c->code]) }}">
                     <div class="rounded overflow-hidden shadow-lg">
-                        <img class="w-full" src="{{ $c->thumbnail }}" alt="Mountain">
+                        <img class="w-full" src="{{ asset('storage/thumbnails/'.$c->thumbnail) }}" alt="{{ $c->title }}">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl text-gray-900 truncate">{{ $c->title }}</div>
                             <div class="font-light text-sm text-blue-500 mb-2">{{ $c->location }}</div>
