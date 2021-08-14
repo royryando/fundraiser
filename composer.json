@@ -14,7 +14,7 @@
         "intervention/image": "^2.6",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "royryando/laravel-duitku": "^1.0"
+        "royryando/laravel-duitku": "1.0.6"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

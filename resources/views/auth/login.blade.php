@@ -10,6 +10,7 @@
             <div class="px-5 py-7">
                 <form action="{{ route('auth.post-login') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="_next" value="{{ request()->input('_next') }}">
                     <label for="username" class="font-semibold text-sm text-gray-600 pb-1 block">E-mail</label>
                     <input id="username" name="username" type="email" value="{{ old('username') }}" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" required />
                     <label for="password" class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>

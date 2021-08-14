@@ -61,6 +61,9 @@ class AuthController extends Controller
         }
 
         Auth::login($user);
+        if ($request->has('_next') && !empty($request->input('_next'))) {
+            return redirect($request->input('_next'));
+        }
         if (session()->has('url.intended')) {
             $redirectTo = session()->get('url.intended');
             session()->forget('url.intended');

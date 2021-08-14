@@ -98,9 +98,13 @@
                             </form>
 
                         </div>
+                        @if(\Illuminate\Support\Facades\Auth::check())
                         <button id="btn-donate" class="mb-4 w-full text-white bg-blue-500 border hover:bg-blue-700 hover:text-white active:bg-blue-700 font-bold px-8 py-3 rounded-full outline-none focus:outline-none ease-linear transition-all duration-100" type="button">
                             <i class="fa fa-handshake-o mr-1"></i> Donate now
                         </button>
+                        @else
+                            <a href="{{ route('auth.login', ['_next' => url()->full()]) }}" class="mb-4 w-full text-center text-white bg-blue-500 border hover:bg-blue-700 hover:text-white active:bg-blue-700 font-bold px-8 py-3 rounded-full outline-none focus:outline-none ease-linear transition-all duration-100">Login to Donate</a>
+                        @endif
                         <div class="addthis_inline_share_toolbox_gl2a"></div>
                     </div>
                 </div>
