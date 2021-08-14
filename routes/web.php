@@ -34,6 +34,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     Route::get('create-campaign', [AccountController::class, 'createCampaign'])->name('account.create-campaign');
     Route::post('create-campaign', [AccountController::class, 'postCreateCampaign'])->name('account.post-create-campaign');
     Route::get('my-donations', [AccountController::class, 'myDonations'])->name('account.my-donations');
+    Route::delete('delete-campaign', [AccountController::class, 'deleteCampaign'])->name('account.delete-campaign');
 });
 Route::prefix('auth')->group(function() {
     Route::get('login', [AuthController::class, 'login'])->name('auth.login');

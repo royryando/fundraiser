@@ -56,7 +56,7 @@
                                 </svg>
                                 Edit
                             </a>
-                            <a class="flex items-center text-theme-6" href="javascript:;" data-toggle="modal" data-target="#delete-confirmation-modal">
+                            <button data-id="{{ $campaign->id }}" class="flex btn-delete-campaign items-center text-theme-6" href="javascript:;" data-toggle="modal" data-target="#delete-confirmation-modal">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 w-4 h-4 mr-1 w-4 h-4 mr-1">
                                     <polyline points="3 6 5 6 21 6"></polyline>
                                     <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -64,7 +64,7 @@
                                     <line x1="14" y1="11" x2="14" y2="17"></line>
                                 </svg>
                                 Delete
-                            </a>
+                            </button>
                         </div>
                     </td>
                 </tr>
@@ -73,4 +73,55 @@
             </table>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script defer>
+        $(document).ready(function() {
+            $('.btn-delete-campaign').on('click', function() {
+                let id = $(this).data('id');
+                let delete_url = '{{ route('account.delete-campaign') }}';
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    footer: '<small><i>Campaign with funds can\'t be deleted, you can deactivate it instead</i></small>'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: delete_url,
+                            type: 'DELETE',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                id
+                            },
+                            success: function(res) {
+                                Swal.fire(
+                                    res.success ? 'Deleted!' : 'Failed!',
+                                    res.message,
+                                    res.success ? 'success' : 'warning'
+                                ).then(function() {
+                                    if (res.success) {
+                                        window.location.reload();
+                                    }
+                                })
+                            },
+                            error: function() {
+                                Swal.fire(
+                                    'Error!',
+                                    'There was an error while processing your request, please try again later',
+                                    'danger'
+                                )
+                            }
+                        })
+
+                    }
+                })
+            });
+        });
+    </script>
 @endsection
