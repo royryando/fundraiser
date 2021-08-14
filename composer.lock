@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e410f375204e2a0ffad693f85a9b6c0b",
+    "content-hash": "9e8e1a85d77cc69daf6e163788287ac8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2539,16 +2539,16 @@
         },
         {
             "name": "royryando/laravel-duitku",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/royryando/laravel-duitku.git",
-                "reference": "c38b87f97322c196b05aec9885495126c32643c2"
+                "reference": "d9949b4c620f34a5d719b933f036010240b518f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/royryando/laravel-duitku/zipball/c38b87f97322c196b05aec9885495126c32643c2",
-                "reference": "c38b87f97322c196b05aec9885495126c32643c2",
+                "url": "https://api.github.com/repos/royryando/laravel-duitku/zipball/d9949b4c620f34a5d719b933f036010240b518f2",
+                "reference": "d9949b4c620f34a5d719b933f036010240b518f2",
                 "shasum": ""
             },
             "require": {
@@ -2592,9 +2592,9 @@
             ],
             "support": {
                 "issues": "https://github.com/royryando/laravel-duitku/issues",
-                "source": "https://github.com/royryando/laravel-duitku/tree/v1.0.5"
+                "source": "https://github.com/royryando/laravel-duitku/tree/v1.0.6"
             },
-            "time": "2021-05-23T08:29:45+00:00"
+            "time": "2021-08-12T03:43:54+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
