@@ -24,7 +24,7 @@
                 @foreach($campaigns as $campaign)
                 <tr class="shadow-sm rounded-md">
                     <td class="py-4 my-2 pl-3">
-                        <a class="text-blue-600" href="{{ route('index.view', ['code' => $campaign->code]) }}">{{ $campaign->title }}</a>
+                        <a class="text-blue-600" target="_blank" href="{{ route('index.view', ['code' => $campaign->code]) }}">{{ $campaign->title }}</a>
                     </td>
                     <td>Rp{{ number_format($campaign->collected, 0, 0, '.') }} / Rp{{ number_format($campaign->target, 0, 0, '.') }} ({{ round(($campaign->collected / $campaign->target) * 100, 1) }}%)</td>
                     <td class="text-center">{{ $campaign->target_date->format('F d, Y') }}</td>
