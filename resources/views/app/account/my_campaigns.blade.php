@@ -24,7 +24,7 @@
                 @foreach($campaigns as $campaign)
                 <tr class="shadow-sm rounded-md">
                     <td class="py-4 my-2 pl-3">
-                        <a class="text-blue-600" href="{{ route('index.view', ['code' => $campaign->code]) }}">{{ $campaign->title }}</a>
+                        <a class="text-blue-600" target="_blank" href="{{ route('index.view', ['code' => $campaign->code]) }}">{{ $campaign->title }}</a>
                     </td>
                     <td>Rp{{ number_format($campaign->collected, 0, 0, '.') }} / Rp{{ number_format($campaign->target, 0, 0, '.') }} ({{ round(($campaign->collected / $campaign->target) * 100, 1) }}%)</td>
                     <td class="text-center">{{ $campaign->target_date->format('F d, Y') }}</td>
@@ -49,7 +49,7 @@
                     </td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3" href="javascript:;">
+                            <a class="flex items-center mr-3" href="{{ route('account.my-campaigns.edit', ['id' => $campaign->id]) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-1 w-4 h-4 mr-1">
                                     <polyline points="9 11 12 14 22 4"></polyline>
                                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>

@@ -61,6 +61,15 @@ class AccountController extends Controller
                 ]);
         }
 
+        if ((int)$target < 1000000) {
+            return redirect()
+                ->back()
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'The minimum target of donation is Rp1.000.000'
+                ]);
+        }
+
         if (!in_array(strtolower($thumbnail->clientExtension()), ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'])) {
             return redirect()
                 ->back()
@@ -155,6 +164,108 @@ class AccountController extends Controller
                 'success' => true,
                 'message' => 'Campaign successfully deleted'
             ]);
+    }
+
+    public function editCampaign($id) {
+        $campaign = Campaign::find($id);
+        if (!$campaign) {
+            return redirect()
+                ->route('account.my-campaigns')
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'Campaign not found'
+                ]);
+        }
+        return view('app.account.edit_campaign', compact('campaign'));
+    }
+
+    public function postEditCampaign($id, Request $request) {
+        $campaign = Campaign::find($id);
+        if (!$campaign) {
+            return redirect()
+                ->route('account.my-campaigns')
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'Campaign not found'
+                ]);
+        }
+
+        $title = $request->input('title');
+        $thumbnail = $request->file('thumbnail');
+        $location = $request->input('location');
+        $target = $request->input('target');
+        $target_date = $request->input('target_date');
+        $description = $request->input('description');
+
+        if (!$title || !$location || !$target || !$target_date || !$description) {
+            return redirect()
+                ->back()
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'Please fill all the blank'
+                ]);
+        }
+
+        if ((int)$target < 1000000) {
+            return redirect()
+                ->back()
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'The minimum target of donation is Rp1.000.000'
+                ]);
+        }
+
+        if (!empty($thumbnail) && !in_array(strtolower($thumbnail->clientExtension()), ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'])) {
+            return redirect()
+                ->back()
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'Only png, jpg, jpeg, gif, bmp, webp format supported for the thumbnail'
+                ]);
+        }
+
+        try {
+            $arr = explode("\n", $description);
+            foreach ($arr as $key => $value) {
+                $arr[$key] = "\n" . $arr[$key];
+            }
+            $x = implode("\n", $arr);
+
+            if (!empty($thumbnail)) {
+                $img = Image::make($thumbnail->getRealPath());
+                $img->resize(1500, 1000, function ($constraint) {
+                    //$constraint->aspectRatio();
+                });
+
+                $img->stream();
+
+                $fileLocation = $campaign->code.'-'.time().'.'.$thumbnail->clientExtension();
+                Storage::disk('local')->put('public/thumbnails/'.$fileLocation, $img, 'public');
+
+                $campaign->thumbnail = $fileLocation;
+            }
+
+            $campaign->title = $title;
+            $campaign->description = $x;
+            $campaign->target = (int)$target;
+            $campaign->location = $location;
+            $campaign->target_date = $target_date;
+            $campaign->save();
+
+            return redirect()
+                ->route('account.my-campaigns')
+                ->with([
+                    'msg_type' => 'success',
+                    'msg' => 'Campaign successfully created'
+                ]);
+        } catch (\Exception $ex) {
+            return redirect()
+                ->back()
+                ->with([
+                    'msg_type' => 'error',
+                    'msg' => $ex->getMessage()
+                ]);
+        }
     }
 
 }

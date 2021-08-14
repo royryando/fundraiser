@@ -36,6 +36,8 @@ class HomeController extends Controller
         if (!$campaign) {
             abort(404);
         }
+        $campaign->views = $campaign->views+1;
+        $campaign->save();
         $latest = Donor::where('campaign_id', $campaign->id)
             ->whereNotNull('paid_at')
             ->orderBy('paid_at', 'DESC')
