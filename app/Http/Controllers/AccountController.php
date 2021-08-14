@@ -61,6 +61,15 @@ class AccountController extends Controller
                 ]);
         }
 
+        if ((int)$target < 1000000) {
+            return redirect()
+                ->back()
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'The minimum target of donation is Rp1.000.000'
+                ]);
+        }
+
         if (!in_array(strtolower($thumbnail->clientExtension()), ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'])) {
             return redirect()
                 ->back()
@@ -194,6 +203,15 @@ class AccountController extends Controller
                 ->with([
                     'msg_type' => 'warning',
                     'msg' => 'Please fill all the blank'
+                ]);
+        }
+
+        if ((int)$target < 1000000) {
+            return redirect()
+                ->back()
+                ->with([
+                    'msg_type' => 'warning',
+                    'msg' => 'The minimum target of donation is Rp1.000.000'
                 ]);
         }
 
