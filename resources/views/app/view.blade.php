@@ -29,11 +29,13 @@
                             <h3 class="text-gray-500"><span class="fa fa-map-marker mr-1"></span> {{ $campaign->location }}</h3>
                         </div>
                         <hr>
-                        <div class="">
+                    </div>
+                    <div class="w-full">
+                        <article class="prose pt-4">
                             @markdown
                             {!! $campaign->description !!}
                             @endmarkdown
-                        </div>
+                        </article>
                     </div>
                 </div>
                 <div class="order-1 xl:order-2 lg:order-2 p-3">
@@ -148,6 +150,14 @@
             </a>
         </div>
     </section>
+@endsection
+@section('styles')
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/ixkaito/unreset-css/master/_unreset.scss">
+    <style>
+        .prose {
+            max-width: none!important;
+        }
+    </style>
 @endsection
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>

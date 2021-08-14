@@ -69,7 +69,11 @@
     <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script defer>
         $(document).ready(function() {
-            let simplemde = new SimpleMDE({ element: document.getElementById("description") });
+            let simplemde = new SimpleMDE({
+                element: document.getElementById("description"),
+                spellChecker: false,
+                placeholder: "Type here...",
+            });
         });
     </script>
 @endsection

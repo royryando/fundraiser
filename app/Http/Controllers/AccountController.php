@@ -82,6 +82,12 @@ class AccountController extends Controller
         }
 
         try {
+            $arr = explode("\n", $description);
+            foreach ($arr as $key => $value) {
+                $arr[$key] = "\n" . $arr[$key];
+            }
+            $x = implode("\n", $arr);
+
             $img = Image::make($thumbnail->getRealPath());
             $img->resize(1500, 1000, function ($constraint) {
                 //$constraint->aspectRatio();
@@ -97,7 +103,7 @@ class AccountController extends Controller
             $campaign->code = $finalUrl;
             $campaign->title = $title;
             $campaign->status = 'ACTIVE';
-            $campaign->description = $description;
+            $campaign->description = $x;
             $campaign->target = (int)$target;
             $campaign->location = $location;
             $campaign->target_date = $target_date;
@@ -106,7 +112,7 @@ class AccountController extends Controller
             $campaign->save();
 
             return redirect()
-                ->back()
+                ->route('account.my-campaigns')
                 ->with([
                     'msg_type' => 'success',
                     'msg' => 'Campaign successfully created'
