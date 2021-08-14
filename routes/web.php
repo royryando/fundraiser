@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth']], function() {
 Route::group(['prefix' => 'account', 'middleware' => ['auth']], function() {
     Route::get('dashboard', [AccountController::class, 'dashboard'])->name('account.dashboard');
     Route::get('my-campaigns', [AccountController::class, 'myCampaigns'])->name('account.my-campaigns');
+    Route::get('my-campaigns/{id}', [AccountController::class, 'editCampaign'])->name('account.my-campaigns.edit');
+    Route::post('my-campaigns/{id}', [AccountController::class, 'postEditCampaign'])->name('account.my-campaigns.post-edit');
     Route::get('create-campaign', [AccountController::class, 'createCampaign'])->name('account.create-campaign');
     Route::post('create-campaign', [AccountController::class, 'postCreateCampaign'])->name('account.post-create-campaign');
     Route::get('my-donations', [AccountController::class, 'myDonations'])->name('account.my-donations');
