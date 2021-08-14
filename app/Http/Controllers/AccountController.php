@@ -176,6 +176,11 @@ class AccountController extends Controller
                     'msg' => 'Campaign not found'
                 ]);
         }
+        $arr = explode("\n", $campaign->description);
+        foreach ($arr as $key => $value) {
+            $arr[$key] = str_replace("\n\n", "\n", $arr[$key]);
+        }
+        $campaign->description = implode("", $arr);
         return view('app.account.edit_campaign', compact('campaign'));
     }
 
