@@ -127,4 +127,34 @@ class AccountController extends Controller
         }
     }
 
+    public function deleteCampaign(Request $request) {
+        $id = $request->input('id');
+
+        $campaign = Campaign::find($id);
+        if (!$campaign) {
+            return response()
+                ->json([
+                    'success' => false,
+                    'message' => 'Campaign not found'
+                ]);
+        }
+
+        $donors = Donor::where('campaign_id', $campaign->id)
+            ->count();
+        if ($campaign->collected > 0 || $donors > 0) {
+            return response()
+                ->json([
+                    'success' => false,
+                    'message' => 'Campaign have funds inside or already waiting for payment transfer, deletion canceled'
+                ]);
+        }
+
+        $campaign->delete();
+        return response()
+            ->json([
+                'success' => true,
+                'message' => 'Campaign successfully deleted'
+            ]);
+    }
+
 }
